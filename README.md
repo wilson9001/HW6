@@ -29,7 +29,7 @@ After all three are running, type some text in the first of the three windows ru
 
 3a/4a/5a/6a. What do you observe?  Is the server responsive?
 
-    In each case the server is responing be echoing back my input and reporting how many bytes were received on the terminal where I started them all.
+    In each case the server is responing by echoing back my input and reporting how many bytes were received on the terminal where I started them all.
 
 In a new fifth window, run the following:
 $ ps -Lo user,pid,ppid,nlwp,lwp,vsz,rss,state,ucmd -C echoserver | grep casey
@@ -144,7 +144,7 @@ ucmd: the command executed.
 
 3c/4c/5c/6c. From the ps output, how many processes and how many threads are running, and why?  Use the PID and LWP to identify different threads or processes.
 
-    Well it looks like echoserveri has one process with one thread, echoserverp has two processes with one thread each (this is the one that uses fork()), echoservert has one process with 2 threads running, and echoservert_pre has a whopping 81 threads already running under just one process. Echoserverp and echoservert have each spund off a process and thread respectively to handle my ncat connections to them. Echoservert_pre has created a pool of threads before they are needed and they are just sleeping.
+    Well it looks like echoserveri has one process with one thread, echoserverp has two processes with one thread each (this is the one that uses fork()), echoservert has one process with 2 threads running, and echoservert_pre has a whopping 81 threads already running under just one process. Echoserverp and echoservert have each spun off a process and thread respectively to handle my ncat connections to them. Echoservert_pre has created a pool of threads before they are needed and they are just sleeping.
 
 3d/4d/5d/6d. From the ps output, how much resident memory are they collectively (i.e., total) using on the system?  Note that memory for a given process should only be counted once, not once for each of its threads.
 
@@ -152,7 +152,7 @@ ucmd: the command executed.
 
 3e (echoserveri only). Enter "Ctrl-C" on the window in which "nc" was first executed to interrupt it.  What happens to the "nc" processes in the other windows?
 
-    Umm nothing? Was something supposed to happen? They all still echo my input...
+    Umm nothing? Was something supposed to happen? They all still echo my input... Killing the ncat process didn't stop any of the servers from running or to report anything...
 
 Stop the server by using "Ctrl-C".
 
